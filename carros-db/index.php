@@ -1,11 +1,3 @@
-<?php
-//Connection
-$conn = new PDO("sqlite:carros.sqlite");
-$conn->setAttribute(
-    PDO::ATTR_DEFAULT_FETCH_MODE,
-    PDO::FETCH_OBJ
-);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +30,9 @@ $conn->setAttribute(
                 <th>Excluir</th>
             </tr>
             <?php
+            //Connection
+            $conn = new PDO("sqlite:carros.sqlite");
+            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
             $q = $conn->query("SELECT * FROM carros;");
             $carros = $q->fetchAll();
 
@@ -53,7 +48,9 @@ $conn->setAttribute(
                 <td>
                     <a href="form.php?id=<?= $c->id ?>">edit</a>
                 </td>
-                <td><?= $c->id ?></td>
+                <td>
+                    <a href="ws/deletar.php?id=<?= $c->id ?>"> Deletar </a>
+                </td>
             </tr>
             <?php endforeach; ?>
         </table>

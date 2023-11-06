@@ -1,3 +1,8 @@
+<?php
+//Connection
+$conn = new PDO("sqlite:carros.sqlite");
+$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
